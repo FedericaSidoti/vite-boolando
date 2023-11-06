@@ -1,7 +1,8 @@
 
 <script>
-
 export default {
+    components:{
+    },
     data() {
         return {
         }
@@ -14,7 +15,7 @@ export default {
     <main class="debu main">
         <section class="container">
             <div class="row">
-                <!---card-->
+                <!-- -card-->
                 <div v-for="n in 6"  :key="n" class="col-4">
                     <card class="card">
                         <figure class="figure">
@@ -43,11 +44,10 @@ export default {
 .main {
     font-size: 12px;
     padding-top: 50px;
-}
 
-
-.main .container {
+    .container {
     padding: 20px;
+    }
 }
 
 h4 {
@@ -56,8 +56,21 @@ h4 {
 
 /*Cards*/
 
+.card {
+    padding: 3px;
+        &:hover .b-img {
+        z-index: 1;
+        }
+}
 .figure {
     position: relative; 
+}
+
+.b-img {
+    position: absolute; 
+    z-index: -1; 
+    left: 0;
+    top: 0; 
 }
 
 .current {
@@ -85,13 +98,22 @@ h4 {
     color: black;
     font-size: 18px;
     right: 0; 
-    top: 30px;  
+    top: 30px; 
+    
+        &:hover {
+        color: red;
+        }
 }
 
 .tag-container {
     position: absolute;
     bottom: 25px;
     z-index: 2; 
+
+        .tag {
+        position: static;
+        display: inline-block;
+        }
 }
 
 .price {
@@ -106,26 +128,5 @@ h4 {
     color: white;
     bottom: 25px; 
     left: 0;
-}
-
-.tag-container .tag {
-    position: static;
-    display: inline-block;
-}
-
-/*hover*/
-.b-img {
-    position: absolute; 
-    z-index: -1; 
-    left: 0;
-    top: 0; 
-}
-
-.card:hover .b-img {
-    z-index: 1;
-}
-
-.heart:hover {
-    color: red;
 }
 </style>
