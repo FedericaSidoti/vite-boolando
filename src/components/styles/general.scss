@@ -1,3 +1,5 @@
+
+/*Reset*/
 * {
     margin: 0;
     padding: 0;
@@ -15,4 +17,25 @@ ul, ol, menu {
 a {
     color: currentColor;
     text-decoration: none;
+}
+
+/*Layout*/
+
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-4 {
+    flex-basis: calc((100% / 12) * 4);
+    padding: 10px;
 }

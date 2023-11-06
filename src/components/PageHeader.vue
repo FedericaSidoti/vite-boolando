@@ -31,5 +31,34 @@ export default {
 
 <style lang="scss" scoped>
 //@use '../styles/partials/variables' as *;
+.page-header {
+    min-height: 30px;
+    background-color: #ff6900;
+    color: white;
+    font-size: 12px;
+    position: fixed;  
+    top: 0; 
+    right: 0; 
+    left: 0; 
+    z-index: 999;
+}
+
+.navbar {
+    padding: 8px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar_list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+}
+
+.img-logo {
+    height: 30px;
+}
 
 </style>

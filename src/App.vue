@@ -16,6 +16,7 @@ export default {
   <PageHeader/>
 </template>
 
-<style>
+<style lang="scss">
+@use './components/styles/general.scss'
 
 </style>
