@@ -43,20 +43,6 @@ export default {
     z-index: 999;
 }
 
-.navbar {
-    padding: 8px 0px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.navbar_list {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 10px;
-}
-
 .img-logo {
     height: 30px;
 }
