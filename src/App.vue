@@ -1,9 +1,19 @@
 <script>
+import PageHeader from './components/PageHeader.vue';
+export default {
+  components: {
+    PageHeader,
+  },
+  data() {
+    return {
+    }
+  }
+}
 
 </script>
 
 <template>
-  <div>hello Vite</div>
+  <PageHeader/>
 </template>
 
 <style>
