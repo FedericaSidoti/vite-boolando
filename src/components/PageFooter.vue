@@ -2,6 +2,18 @@
 export default {
     data() {
         return {
+            icons: [
+                'A',
+                'B',
+                'C',
+                'D',
+                'E'
+            ], 
+            links: [
+                'Informazioni legali',
+                'Informativa privacy',
+                'Diritto di recesso',
+            ]
         }
     }
 }
@@ -14,19 +26,17 @@ export default {
                 <div>
                     <h5>Booleando srl</h5>
                     <ul class="navbar_list">
-                        <li>Informazioni legali</li>
-                        <li>Informativa privacy</li>
-                        <li>Diritto di recesso</li>
+                        <li v-for="link in links">
+                            <a>{{ link }}</a>
+                        </li>
                     </ul>
                 </div>
                 <div>
                     <h5>Trovaci anche su</h5>
                     <ul class="navbar_list">
-                        <li>A</li>
-                        <li>A</li>
-                        <li>A</li>
-                        <li>A</li>
-                        <li>A</li>
+                        <li v-for="icon, index in icons">
+                            <a>{{icon }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
