@@ -23,7 +23,7 @@ export default {
                     this.discounted = ((price/ 100)* discountValue );
                 }
             }
-            return this.discounted.toFixed(2)
+            return this.discounted
         }
         
     }
@@ -51,8 +51,13 @@ export default {
             <div>
                 <p>{{ carditem.brand }}</p>
                 <h4>{{ carditem.name }}</h4>
-                <span v-if="getPriceDiscounted(carditem.price, carditem.badges)!== '0.00'" class="final-price">{{ getPriceDiscounted(carditem.price, carditem.badges) }} </span>
-                <span :class="getPriceDiscounted(carditem.price, carditem.badges)!== '0.00'? 'original-price': 'final-price'">{{ carditem.price }} &euro;</span>
+                <span 
+                v-if="this.discounted!== 0" 
+                class="final-price">{{this.discounted.toFixed(2)}}
+                </span>
+                <span 
+                :class="this.discounted!== 0? 'original-price': 'final-price'">{{ carditem.price }} &euro;
+                </span>
             </div>
         </card>
 </template>
