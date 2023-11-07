@@ -51,6 +51,10 @@ export default {
     background-color: #1a1a1a;
     min-height: 30px;
 }
+ul {
+    align-items: center;
+    justify-content: center;
+}
 
 h5 {
     font-size: 11px;

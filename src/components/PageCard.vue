@@ -111,7 +111,7 @@ export default {
 
 .tag-container {
     position: absolute;
-    bottom: 50px;
+    bottom: 35px;
     z-index: 2; 
     padding: 0 5px;
 
