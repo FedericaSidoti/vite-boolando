@@ -80,7 +80,9 @@ export default {
     top: 0; 
 }
 
-
+h4{
+    text-transform: uppercase;
+}
 .original-price {
     color: black;
     text-decoration: line-through;
