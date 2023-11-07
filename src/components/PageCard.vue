@@ -2,14 +2,33 @@
 export default {
     data() {
         return {
+            discounted : 0,
+            currentIndex : 0,
         }
     },
     //qui vanno le props. img: String (chiave : tipo dato) MA MEGLIO card: Object
     //ancora meglio card : { type:Object, required: true }
     props : {
         carditem : Object
+    },
+    methods: {
+        getPriceDiscounted (price, array) {
+
+            for (let i = 0; i < array.length; i++) {
+                const currentBadge = array[i]
+                if (currentBadge.type === 'discount'){
+                    const discountValueNegative = parseInt(currentBadge.value)
+                    const discountValue = discountValueNegative * -1
+                    
+                    this.discounted = ((price/ 100)* discountValue );
+                }
+            }
+            return this.discounted.toFixed(2)
+        }
+        
     }
 }
+
 </script>
 
 
@@ -22,7 +41,7 @@ export default {
                 <img :src="/img/ + carditem.frontImage">
                 <img class='b-img' :src="/img/ + carditem.backImage">
                 <div class="tag-container">
-                    <span v-for="badge in carditem.badges"
+                    <span v-for="badge, index in carditem.badges"
                     class="tag"
                     :class="badge.type==='discount'? 'price': 'description'"
                     >{{ badge.value }}</span>
@@ -32,9 +51,8 @@ export default {
             <div>
                 <p>{{ carditem.brand }}</p>
                 <h4>{{ carditem.name }}</h4>
-                <p class="discounted-price">Lorem bla 
-                    <span class="original-price">{{ carditem.price }} &euro;</span>
-                </p>
+                <span v-if="getPriceDiscounted(carditem.price, carditem.badges)!== '0.00'" class="final-price">{{ getPriceDiscounted(carditem.price, carditem.badges) }} </span>
+                <span :class="getPriceDiscounted(carditem.price, carditem.badges)!== '0.00'? 'original-price': 'final-price'">{{ carditem.price }} &euro;</span>
             </div>
         </card>
 </template>
@@ -58,14 +76,16 @@ export default {
 }
 
 
-.discounted-price {
-    color: red;
-}
-
 .original-price {
     color: black;
     text-decoration: line-through;
 }
+
+.final-price {
+    color: red;
+    margin-right: 5px;
+}
+
 
 /*tags and decorations*/
 
@@ -79,9 +99,9 @@ export default {
     right: 0; 
     top: 20px; 
     
-        // &:hover {
-        // color: red;
-        // }
+        &:hover {
+        color: red;
+        }
 }
 
 .tag-container {
