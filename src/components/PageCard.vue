@@ -22,16 +22,17 @@ export default {
                 <img :src="/img/ + carditem.frontImage">
                 <img class='b-img' :src="/img/ + carditem.backImage">
                 <div class="tag-container">
-                    <span class="tag price">-30%</span>
-                    <span class="tag description">Sostenibilità</span>
+                    <span v-for="badge in carditem.badges"
+                    class="tag"
+                    :class="badge.type==='tag'? 'description': 'price'">{{ badge.value }}</span>
                 </div>
                 <span class="tag heart">&hearts;</span>
             </figure>
             <div>
-                <p>Lorem bla</p>
-                <h4>Lorem bla</h4>
-                <p class="current">Lorem bla 
-                    <span class="old">lorem bla</span>
+                <p>{{ carditem.brand }}</p>
+                <h4>{{ carditem.name }}</h4>
+                <p class="discounted-price">Lorem bla 
+                    <span class="original-price">{{ carditem.price }} &euro;</span>
                 </p>
             </div>
         </card>
@@ -41,7 +42,7 @@ export default {
 .card {
     padding: 3px;
         &:hover .b-img {
-        z-index: 99;
+        z-index: 1;
         }
 }
 .figure {
@@ -55,25 +56,16 @@ export default {
     top: 0; 
 }
 
-.current {
+.discounted-price {
     color: red;
 }
 
-.old {
+.original-price {
     color: black;
     text-decoration: line-through;
 }
 
 /*tags and decorations*/
-
-.tag{
-    line-height: 20px;
-    font-size: 11px;
-    padding: 0 8px;
-    position: absolute; 
-    z-index: 2; 
-    /*aspect-ratio: 1 se non dai line-height e padding!*/
-}
 
 .heart {
     background-color: white;
@@ -89,26 +81,21 @@ export default {
 
 .tag-container {
     position: absolute;
-    bottom: 25px;
+    bottom: 50px;
     z-index: 2; 
 
         .tag {
-        position: static;
-        display: inline-block;
+        color: white;
+        font-size: 11px;
+        padding: 5px 8px;
         }
 }
 
 .price {
     background-color: #ff0000;
-    color: white;
-    bottom: 25px; 
-    left: 0;
 }
 
 .description {
     background-color: #008000;
-    color: white;
-    bottom: 25px; 
-    left: 0;
 }
 </style>
