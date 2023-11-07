@@ -24,9 +24,10 @@ export default {
                 <div class="tag-container">
                     <span v-for="badge in carditem.badges"
                     class="tag"
-                    :class="badge.type==='tag'? 'description': 'price'">{{ badge.value }}</span>
+                    :class="badge.type==='discount'? 'price': 'description'"
+                    >{{ badge.value }}</span>
                 </div>
-                <span class="tag heart">&hearts;</span>
+                <span class="heart" :class="carditem.isInFavorites ===true? 'text-red' : ''">&hearts;</span>
             </figure>
             <div>
                 <p>{{ carditem.brand }}</p>
@@ -56,6 +57,7 @@ export default {
     top: 0; 
 }
 
+
 .discounted-price {
     color: red;
 }
@@ -71,12 +73,15 @@ export default {
     background-color: white;
     color: black;
     font-size: 18px;
+    position: absolute;
+    z-index: 2;
+    padding: 8px;
     right: 0; 
-    top: 30px; 
+    top: 20px; 
     
-        &:hover {
-        color: red;
-        }
+        // &:hover {
+        // color: red;
+        // }
 }
 
 .tag-container {
@@ -100,4 +105,8 @@ export default {
     background-color: #008000;
     margin-right: 5px;
 }
+
+.text-red {
+    color: red;
+    }
 </style>
