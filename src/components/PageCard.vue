@@ -41,7 +41,7 @@ export default {
 .card {
     padding: 3px;
         &:hover .b-img {
-        z-index: 1;
+        z-index: 99;
         }
 }
 .figure {
