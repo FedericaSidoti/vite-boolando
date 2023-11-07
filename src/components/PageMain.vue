@@ -1,40 +1,40 @@
 
 <script>
+import PageCard from './PageCard.vue';
+//anche il file json va importato come un componente!
+import CardJSon from './db.json'
 export default {
     components:{
+        PageCard,
+        //però non è davvero un componente, quindi non va qui
     },
     data() {
         return {
+            // fa parte dei nostri data quindi creare proprietà CARDS : CARDSJSON
+            //ma siccome è un oggetto con un array dentro, CARDJSON.PRODUCTS
+            cards : CardJSon.products
         }
+    },
+    methods: {
+        // getDiscountPrice(price, discount) return tot = this.discountedPrice
     }
 }
 
 </script>
 
 <template>
-    <main class="debu main">
+    <main class="main">
         <section class="container">
             <div class="row">
-                <!-- -card-->
-                <div v-for="n in 6"  :key="n" class="col-4">
-                    <card class="card">
-                        <figure class="figure">
-                            <img src="/img/1.webp">
-                            <img class="b-img" src="/img/1b.webp">
-                            <div class="tag-container">
-                                <span class="tag price">-30%</span>
-                                <span class="tag description">Sostenibilità</span>
-                            </div>
-                            <span class="tag heart">&hearts;</span>
-                        </figure>
-                        <div>
-                            <p>Lorem bla</p>
-                            <h4>Lorem bla</h4>
-                            <p class="current">Lorem bla <span class="old">lorem bla</span></p>
-                        </div>
-                    </card>
-                </div>
-                <!---fine card-->
+                <!--questo v-for diventa v-for='(Card, index) in cards'-->
+                <PageCard v-for="(card, id) in cards"  
+                :key="id"
+                :carditem = 'card'
+                class="col-4"
+                />
+                <!-- qui in PageCard, nel file padre, va la dichiarazione delle props così -->
+                <!--:img='card.image'-->
+                <!--ma possiamo passare anche l'oggetto CardItem='Card'-->
             </div>
         </section>
     </main>
@@ -42,8 +42,8 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-    font-size: 12px;
     padding-top: 50px;
+    font-size: 12px;
 
     .container {
     padding: 20px;
@@ -54,79 +54,4 @@ h4 {
     text-transform: uppercase;
 }
 
-/*Cards*/
-
-.card {
-    padding: 3px;
-        &:hover .b-img {
-        z-index: 1;
-        }
-}
-.figure {
-    position: relative; 
-}
-
-.b-img {
-    position: absolute; 
-    z-index: -1; 
-    left: 0;
-    top: 0; 
-}
-
-.current {
-    color: red;
-}
-
-.old {
-    color: black;
-    text-decoration: line-through;
-}
-
-/*tags and decorations*/
-
-.tag{
-    line-height: 20px;
-    font-size: 11px;
-    padding: 0 8px;
-    position: absolute; 
-    z-index: 2; 
-    /*aspect-ratio: 1 se non dai line-height e padding!*/
-}
-
-.heart {
-    background-color: white;
-    color: black;
-    font-size: 18px;
-    right: 0; 
-    top: 30px; 
-    
-        &:hover {
-        color: red;
-        }
-}
-
-.tag-container {
-    position: absolute;
-    bottom: 25px;
-    z-index: 2; 
-
-        .tag {
-        position: static;
-        display: inline-block;
-        }
-}
-
-.price {
-    background-color: #ff0000;
-    color: white;
-    bottom: 25px; 
-    left: 0;
-}
-
-.description {
-    background-color: #008000;
-    color: white;
-    bottom: 25px; 
-    left: 0;
-}
 </style>
