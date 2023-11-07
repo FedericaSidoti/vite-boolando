@@ -83,6 +83,7 @@ export default {
     position: absolute;
     bottom: 50px;
     z-index: 2; 
+    padding: 0 5px;
 
         .tag {
         color: white;
@@ -97,5 +98,6 @@ export default {
 
 .description {
     background-color: #008000;
+    margin-right: 5px;
 }
 </style>
