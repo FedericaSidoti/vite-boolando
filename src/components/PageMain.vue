@@ -2,7 +2,8 @@
 <script>
 import PageCard from './PageCard.vue';
 //anche il file json va importato come un componente!
-import CardJSon from './db.json'
+//solo per prova. poi sarà import axios in App
+import {store} from '../store'
 export default {
     components:{
         PageCard,
@@ -12,7 +13,8 @@ export default {
         return {
             // fa parte dei nostri data quindi creare proprietà CARDS : CARDSJSON
             //ma siccome è un oggetto con un array dentro, CARDJSON.PRODUCTS
-            cards : CardJSon.products
+            //dichiariamo store tra i data
+            store : store,
         }
     },
     methods: {
@@ -27,7 +29,9 @@ export default {
         <section class="container">
             <div class="row">
                 <!--questo v-for diventa v-for='(Card, index) in cards'-->
-                <PageCard v-for="(card, id) in cards"  
+                <!-- store contiene cards perchè lo hai scritto in store.js -->
+                <!-- cards è l'oggetto che contiene i tuoi dati, con proprietà products  -->
+                <PageCard v-for="(card, id) in store.cards.products"  
                 :key="id"
                 :carditem = 'card'
                 class="col-4"

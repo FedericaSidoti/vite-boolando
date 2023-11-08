@@ -2,8 +2,7 @@
 export default {
     data() {
         return {
-            discounted : 0,
-            currentIndex : 0,
+            discounted : -1,
         }
     },
     //qui vanno le props. img: String (chiave : tipo dato) MA MEGLIO card: Object
@@ -13,14 +12,15 @@ export default {
     },
     methods: {
         getPriceDiscounted (price, array) {
-
             for (let i = 0; i < array.length; i++) {
                 const currentBadge = array[i]
                 if (currentBadge.type === 'discount'){
                     const discountValueNegative = parseInt(currentBadge.value)
-                    const discountValue = discountValueNegative * -1
+                     const discountValue = discountValueNegative * -1
                     
-                    this.discounted = ((price/ 100)* discountValue );
+                    this.discounted = ((price/ 100)* discountValue ).toFixed(2);
+                } else if (currentBadge.type === 'tag') {
+                    this.discounted= 0
                 }
             }
             return this.discounted
@@ -51,12 +51,12 @@ export default {
         <div>
             <p>{{ carditem.brand }}</p>
             <h4>{{ carditem.name }}</h4>
-            <span 
-            v-if="this.discounted!== 0" 
-            class="final-price">{{this.discounted.toFixed(2)}}
+            <span
+            v-if="discounted!== 0"
+            class="final-price">{{getPriceDiscounted(carditem.price, carditem.badges)}}
             </span>
             <span 
-            :class="this.discounted!== 0? 'original-price': 'final-price'">{{ carditem.price }} &euro;
+            :class="discounted!== 0? 'original-price': 'final-price'">{{ carditem.price }} &euro;
             </span>
         </div>
     </div>
