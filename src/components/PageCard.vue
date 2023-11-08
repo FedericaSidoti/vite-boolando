@@ -33,33 +33,33 @@ export default {
 
 
 <template>
-        <card class="card">
-            <figure class="figure">
-                <!--vanno usate le props. :src='img'-->
-                <!--se hai passato oggetto carditem => :src='CardItem.img'-->
-                <!--NOTA: la props deve avere lo stesso nome nella dichiarazione, qui, e in props-->
-                <img :src="/img/ + carditem.frontImage">
-                <img class='b-img' :src="/img/ + carditem.backImage">
-                <div class="tag-container">
-                    <span v-for="badge, index in carditem.badges"
-                    class="tag"
-                    :class="badge.type==='discount'? 'price': 'description'"
-                    >{{ badge.value }}</span>
-                </div>
-                <span class="heart" :class="carditem.isInFavorites ===true? 'text-red' : ''">&hearts;</span>
-            </figure>
-            <div>
-                <p>{{ carditem.brand }}</p>
-                <h4>{{ carditem.name }}</h4>
-                <span 
-                v-if="this.discounted!== 0" 
-                class="final-price">{{this.discounted.toFixed(2)}}
-                </span>
-                <span 
-                :class="this.discounted!== 0? 'original-price': 'final-price'">{{ carditem.price }} &euro;
-                </span>
+    <div class="card">
+        <figure class="figure">
+            <!--vanno usate le props. :src='img'-->
+            <!--se hai passato oggetto carditem => :src='CardItem.img'-->
+            <!--NOTA: la props deve avere lo stesso nome nella dichiarazione, qui, e in props-->
+            <img :src="/img/ + carditem.frontImage">
+            <img class='b-img' :src="/img/ + carditem.backImage">
+            <div class="tag-container">
+                <span v-for="badge, index in carditem.badges"
+                class="tag"
+                :class="badge.type==='discount'? 'price': 'description'"
+                >{{ badge.value }}</span>
             </div>
-        </card>
+            <span class="heart" :class="carditem.isInFavorites ===true? 'text-red' : ''">&hearts;</span>
+        </figure>
+        <div>
+            <p>{{ carditem.brand }}</p>
+            <h4>{{ carditem.name }}</h4>
+            <span 
+            v-if="this.discounted!== 0" 
+            class="final-price">{{this.discounted.toFixed(2)}}
+            </span>
+            <span 
+            :class="this.discounted!== 0? 'original-price': 'final-price'">{{ carditem.price }} &euro;
+            </span>
+        </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
