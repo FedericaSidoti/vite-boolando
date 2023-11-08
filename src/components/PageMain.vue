@@ -2,7 +2,7 @@
 <script>
 import PageCard from './PageCard.vue';
 //anche il file json va importato come un componente!
-import store from '../store'
+import { store } from '../store'
 export default {
     components:{
         PageCard,
