@@ -24,6 +24,9 @@ export default {
                 }
             }
             return this.discounted
+        },
+        triggerModal() {
+            this.$emit('showModalInfo', this.carditem)
         }
         
     }
@@ -50,7 +53,7 @@ export default {
         </figure>
         <div>
             <p>{{ carditem.brand }}</p>
-            <h4>{{ carditem.name }}</h4>
+            <h4 class="card-title" @click="triggerModal">{{ carditem.name }}</h4>
             <span
             v-if="discounted!== 0"
             class="final-price">{{getPriceDiscounted(carditem.price, carditem.badges)}}
@@ -80,8 +83,9 @@ export default {
     top: 0; 
 }
 
-h4{
+.card-title{
     text-transform: uppercase;
+    cursor: pointer;
 }
 .original-price {
     color: black;

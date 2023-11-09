@@ -4,7 +4,6 @@ import PageMain from "./components/PageMain.vue";
 import PageFooter from "./components/PageFooter.vue";
 import axios from "axios";
 import { store } from './store';
-//import store2 from "./store2";
 export default {
   components: {
     PageHeader,
