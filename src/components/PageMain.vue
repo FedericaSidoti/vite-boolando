@@ -40,7 +40,7 @@ export default {
                 :key="id"
                 :carditem = 'card'
                 class="col-4"
-                @showModalInfo="showModal(card)"
+                @showModalInfo="showModal"
                 />
                 <!-- qui in PageCard, nel file padre, va la dichiarazione delle props così -->
                 <!--:img='card.image'-->
@@ -56,6 +56,16 @@ export default {
                 <h1>{{selectedProduct.name }}</h1>
                 <div class="icon" @click="closeModal">X</div>
             </div>
+            <figure class="figure">
+                <img :src="/img/ + selectedProduct.backImage">
+                <div class="description">
+                    <p> Marca: {{ selectedProduct.brand }}</p>
+                    <p> Prezzo: {{ selectedProduct.price }}</p>
+                    <p> Qui esiste una descrizione accuratissima:</p>
+                    <img src="https://media1.giphy.com/media/OfXKySrn0Ej4s/200.gif">
+                </div>
+                
+            </figure>
         </div>
     </div>
 </template>
@@ -76,8 +86,7 @@ export default {
     right: 0;
     bottom: 0;
     left: 0; 
-    background-color: black;
-    opacity: 0.7;
+    background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     z-index: 10;
 }
@@ -89,13 +98,27 @@ export default {
     transform: translate(-50%, -50%);
     padding: 30px;
     margin: 0 auto;
-    width: 500px;
+    width: 600px;
+}
+
+.figure {
+    display: flex;
+    gap: 10px; 
+    img {
+            width: 300px
+        }
+}
+
+.description {
+    display: flex;
+    flex-direction: column ;
+    justify-content: space-around;
 }
 .title-wrap {
-    
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 20px;
 }
 
 .icon {
